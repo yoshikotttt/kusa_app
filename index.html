@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <title>草取りゲーム！</title>
+</head>
+
+<body>
+    <header>
+        <!-- <h1>くさとりゲーム</h1> -->
+
+        <p>名前を入力してね</p>
+        <input type="text" id="name" name="name">
+        <button id="name_button"><span>名前を登録する</span></button>
+
+    </header>
+    <div id="exp">
+        <!-- <div>
+            <button id="btn_exp">説明</button>
+        </div> -->
+        <div class="box1">
+            <div id="name_exp"></div>
+            <h2>ようこそ、くさとりゲームへ！</h2>
+            <p>制限時間は10秒です</p>
+            <p>たくさんの草を抜いて高得点を目指しましょう！</p>
+            <br>
+            <p>ゲームのやり方</p>
+            <ul>
+                <li>画面上に表示される草を見つけたら、マウスのクリック（タップ）で抜くことができます。草はランダムに現れますので、素早く反応して草を抜きましょう！</li>
+                <br>
+                <li>草の色や大きさによって得点が変わります。高得点を狙うために、太い草を見つけたら優先的に抜きましょう！</li>
+                <br>
+
+            </ul>
+            <p>たくさん抜いてハイスコアを目指しましょう！</p>
+            <br>
+            <p class="start_anime">スタートボタンで開始</p>
+
+        </div>
+    </div>
+    <div id="tutorial">
+        <button id="start">スタート！！</button>
+    </div>
+
+    </div>
+
+
+
+
+
+
+    <div id="time"></div>
+
+
+    <p></p>
+    <div id="name_exp2"></div>
+    <div class="box2">
+        <p>得点</p>
+        <p id="score"></p>
+        <p>点</p>
+    </div>
+    <div id="container"></div>
+    <div class="images">
+        <img src="./img/point.png" id="kusa1" alt="">
+
+    </div>
+
+
+    <div class="box4">
+
+        <button id="reset">もう一度</button>
+
+        <button id="ranking">ランキングを見る</button>
+
+        <button id="back">はじめに戻る</button>
+    </div>
+    <p>ランキング</p>
+    <div class="box5">
+        <div id="rank"></div>
+    </div>
+    <footer>
+        <p>2023 su-san All RIghts Reserved.</p>
+    </footer>
+
+
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="firebase.js" type="module"></script>
+
+    <script>
+        //名前を表示
+        $("#name_button").on("click", function () {
+            const nameValue = $("#name").val();
+            $("#name_exp").text(`${nameValue}さん`);
+            $("#name_exp2").text(`${nameValue}さんの挑戦`);
+
+
+
+        });
+
+        const container = $("#container");
+
+        //個別のIDを持ったセルを１６個作る、配置はgrid
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                container.append($("<div>").addClass('cell').attr("id", `cell-${i}-${j}`))
+
+            }
+        }
+
+        //iとjと画像の３つに数字をつけて、ランダムな場所にランダムな画像を表示する関数
+        function displayRandomImage() {
+            const img1 = "./img/ks1.png";
+            const img2 = "./img/ks2.png";
+            const img3 = "./img/ks3.png";
+            const img4 = "./img/ks10.png";
+            const img5 = "./img/hn5.png";
+            const images = [img1, img2, img3, img4, img5];
+
+            // //画像をクリア
+            $('.cell').css('background-image', 'none');
+
+            //この時同じセルが出てしまうことがあるが今回はそのまま
+            for (let i = 0; i < 7; i++) {
+                const randomI = Math.floor(Math.random() * 4);
+                const randomJ = Math.floor(Math.random() * 4);
+                const randomImageIndex = Math.floor(Math.random() * images.length);
+                const randomImage = images[randomImageIndex];
+
+                const cell = $(`#cell-${randomI}-${randomJ}`);
+                //data()メソッドを使って、cellのデータ属性'image'にrandomImageをセット
+                //これをしないと、紐づかない
+                cell.data('image', randomImage);
+                console.log(cell.data('image'));
+                //表示
+                const imageData = cell.data('image');
+                cell.css('background-image', `url(${imageData})`);
+
+            }
+        }
+        //スタートでゲーム開始
+        $("#start").on("click", function () {
+            $("#score").text("");
+            //1秒ごと繰り返しのタイマーを定義
+            const intervalId = setInterval(displayRandomImage, 1000);
+
+            //10秒で終わるタイマーの中に、繰り返しのタイマーを入れる
+            setTimeout(function () {
+                clearInterval(intervalId);
+                $('.cell').css('background-image', 'none');
+            }, 10000);
+            $(".cell").css('background-image', 'none');
+
+        });
+
+
+
+        //クリックして草を取った時に点数を記録する
+        $(".cell").on("click", function () {
+            //thisはクリックしたセルのこと
+            const clickedCell = $(this);
+            const backgroundImage = clickedCell.css('background-image');
+            //定義せず、if文のなかでscore=5のように書いてもいい
+            const img1Score = 1;
+            const img2Score = 2;
+            const img3Score = 5;
+            const img4Score = 10;
+            const img5Score = 0;
+
+            //クリックしたら土の画像に変える
+            $(this).css('background-image', 'url("./img/tc.png")');
+
+            let score = 0;
+            //test()は文字列とマッチするかどうかをテストする　includesではダメだった
+            //includeはurl("./img/hn5.png")の文字列が記号も含めてあっているか確認している
+            //(backgroundImage)の値が//で囲まれた文字ks1.pngと一致するかみている
+            if (/ks1\.png/.test(backgroundImage)) {
+                score = img1Score;
+            } else if (/ks2\.png/.test(backgroundImage)) {
+                score = img2Score;
+            } else if (/ks3\.png/.test(backgroundImage)) {
+                score = img3Score;
+            } else if (/ks10\.png/.test(backgroundImage)) {
+                score = img4Score;
+            } else if (/hn5\.png/.test(backgroundImage)) {
+                score = img5Score;
+            } else {
+                score = 0;
+            }
+
+
+
+            let totalScore = parseInt($("#score").text()) || 0;
+            totalScore += score;
+            $("#score").text(totalScore);
+            console.log(totalScore);
+
+
+        });
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
