@@ -1,0 +1,444 @@
+@media (min-width: 768px) {
+
+    #container>div {
+        border: 0.5px solid #a19c9c;
+        width: 100px;
+        height: 100px;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        font-family: 'DotGothic16', sans-serif;
+        text-align: center;
+
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        width: 250px;
+        margin: 20px auto;
+
+    }
+
+    #container {
+        display: grid;
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(4, 100px);
+        gap: 1px;
+        /* background-image: url(./img/school.png); */
+        background-size: cover;
+        background-position: center center;
+        background-color: rgb(250, 241, 230);
+        height: 403px;
+        width: 403px;
+
+
+
+
+    }
+
+    .name01 {
+        padding-top: 20px;
+    }
+
+    #name_button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 160px;
+        margin: 20px auto;
+        padding: .9em 2em;
+        border: none;
+        border-bottom: solid 5px #dc5b1f;
+        border-radius: 25px;
+        background-color: #f79626;
+        color: #fff;
+        font-weight: 600;
+        font-size: 12px;
+        transition: .5s ease;
+        font-family: 'DotGothic16', sans-serif;
+
+    }
+
+    #name_button:hover {
+        transform: translateY(3px);
+        border-bottom-width: 2px;
+    }
+
+    #start {
+        width: 100px;
+    }
+
+    #reset {
+        width: 100px;
+    }
+
+    .box1 {
+        width: 700px;
+        margin: 0 auto;
+    }
+
+    #start {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        margin: 20px auto;
+        padding: .9em 2em;
+        border: none;
+        border-bottom: solid 5px #5ca000;
+        border-radius: 25px;
+        background-color: #8cd025;
+        color: #fff;
+        font-weight: 600;
+        font-size: 12px;
+        transition: .5s ease;
+        font-family: 'DotGothic16', sans-serif;
+
+    }
+
+    #start:hover {
+        transform: translateY(3px);
+        border-bottom-width: 2px;
+    }
+
+    .box2 {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    #score {
+        margin: 0 5px;
+    }
+
+    #container {
+        margin: 0 auto;
+    }
+
+    #rank {
+        background-color: #f9c9d6;
+        padding: 20px 40px;
+        border-radius: 8px;
+    }
+
+
+    .box5 {
+        display: flex;
+        justify-content: center;
+
+
+
+    }
+
+    .box5 p {
+        margin-right: 20px;
+
+    }
+
+
+}
+
+@media (max-width: 767px) {
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: 'DotGothic16', sans-serif;
+
+    }
+
+    header {
+        background-color: #fbb6b6;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        background-image: url(./img/top.png);
+
+
+    }
+
+    header p {
+        margin: 250px 0 30px 0;
+        animation: flash 1s linear infinite;
+
+    }
+
+
+    @keyframes flash {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+    }
+
+    #name {
+        width: 200px;
+        margin-bottom: 50px;
+        position: relative;
+        display: block;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        text-align: center;
+        outline: none;
+    }
+
+    #name_button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 160px;
+        margin: 20px auto;
+        padding: .9em 2em;
+        border: none;
+        border-bottom: solid 5px #dc5b1f;
+        border-radius: 25px;
+        background-color: #f79626;
+        color: #fff;
+        font-weight: 600;
+        font-size: 12px;
+        transition: .5s ease;
+        font-family: 'DotGothic16', sans-serif;
+
+    }
+
+    #name_button:hover {
+        transform: translateY(3px);
+        border-bottom-width: 2px;
+    }
+
+
+
+
+    #exp {
+        background-color: #f9e8bd;
+    }
+
+    #tutorial {
+        display: flex;
+        justify-content: center;
+        background-color: #f9e8bd;
+    }
+
+    .images {
+        width: auto;
+        margin: 10px auto;
+
+    }
+
+    #time {
+        background-color: #a8effe;
+    }
+
+    #score {
+        background-color: #bad5fe;
+    }
+
+    #reset {
+        background-color: #cebffc;
+    }
+
+    #ranking {
+        background-color: #feb7ec;
+    }
+
+    #rank {
+        background-color: #f9c9d6;
+        padding: 20px 40px;
+        border-radius: 8px;
+    }
+
+
+    #container {
+        display: grid;
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: repeat(4, 70px);
+        gap: 1px;
+        background-color: rgb(250, 241, 230);
+        height: auto;
+        width: auto;
+        margin: auto;
+
+
+    }
+
+    #container>div {
+        border: 0.5px solid #a19c9c;
+        width: 70px;
+        height: 70px;
+    }
+
+    .cell {
+        background-size: cover;
+    }
+
+    #name_exp {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .box1 h2,
+    p {
+        text-align: center;
+    }
+
+    .start_anime {
+        animation: flash 1s linear infinite;
+
+    }
+
+    #start {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        margin: 20px auto;
+        padding: .9em 2em;
+        border: none;
+        border-bottom: solid 5px #5ca000;
+        border-radius: 25px;
+        background-color: #8cd025;
+        color: #fff;
+        font-weight: 600;
+        font-size: 12px;
+        transition: .5s ease;
+        font-family: 'DotGothic16', sans-serif;
+
+    }
+
+    #start:hover {
+        transform: translateY(3px);
+        border-bottom-width: 2px;
+    }
+
+    .box2 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .box2 p {
+        margin-left: 20px;
+    }
+
+
+
+    #name_exp2 {
+        text-align: center;
+
+    }
+
+    footer {
+        font-size: 13px;
+    }
+
+    .box4 {
+        display: flex;
+        justify-content: space-around;
+
+
+
+
+
+    }
+
+    #reset {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        margin: 20px auto;
+        padding: .9em 2em;
+        border: none;
+        border-bottom: solid 5px #5ca000;
+        border-radius: 25px;
+        background-color: #8cd025;
+        color: #fff;
+        font-weight: 600;
+        font-size: 12px;
+        transition: .5s ease;
+        font-family: 'DotGothic16', sans-serif;
+
+    }
+
+    #reset:hover {
+        transform: translateY(3px);
+        border-bottom-width: 2px;
+    }
+
+    #ranking {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        margin: 20px auto;
+        padding: .9em 2em;
+        border: none;
+        border-bottom: solid 5px #e5599d;
+        border-radius: 25px;
+        background-color: #f1799f;
+        color: #fff;
+        font-weight: 600;
+        font-size: 12px;
+        transition: .5s ease;
+        font-family: 'DotGothic16', sans-serif;
+
+    }
+
+    #ranking:hover {
+        transform: translateY(3px);
+        border-bottom-width: 2px;
+    }
+
+    .box5 {
+        display: flex;
+        justify-content: center;
+
+
+
+    }
+
+    .box5 p {
+        margin-right: 20px;
+
+    }
+
+    #back {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        margin: 20px auto;
+        padding: .9em 2em;
+        border: none;
+        border-bottom: solid 5px #dc5b1f;
+        border-radius: 25px;
+        background-color: #f79626;
+        color: #fff;
+        font-weight: 600;
+        font-size: 12px;
+        transition: .5s ease;
+        font-family: 'DotGothic16', sans-serif;
+
+    }
+
+    #back:hover {
+        transform: translateY(3px);
+        border-bottom-width: 2px;
+    }
+
+
+}
